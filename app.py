@@ -46,7 +46,7 @@ def register():
         username = request.form["username"]
         password = request.form["password"]
 
-        password_hash = generate_password_hash(password)
+        password_hash = generate_password_hash(password, method='pbkdf2:sha256')
         
         conn = get_db_connection()
         try:
