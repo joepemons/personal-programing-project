@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bikes</title>
+    <link rel="stylesheet" href="/static/CSS/bikesstyle.css">
+</head>
+<body>
+    <header class="header-banner">
+        <div class="header-content">
+            <h1>Bike-Rental</h1>
+            <nav class="nav-container">
+                <a href="{{ url_for('overview') }}" class="nav-link">overview</a>
+                <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+                <a href="{{ url_for('parts') }}" class="nav-link">parts</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        {% for bike in bikes %}
+        <div class="accomodation-card">
+            <h3>{{ bike['Brand'] }}</h3>
+            <p>model: {{ bike['model'] }}</p>
+            <p>type: {{ bike['type'] }}</p>
+            <p>price: {{ bike['price'] }}</p>
+            <p>availability: {{ bike['status'] }}</p>
+            <img src="{{ bike['image_url'] }}" alt="{{ bike['Brand'] }} {{ bike['model'] }}" class="bike-image" width="300" height="200">
+            {% if bike['status'] == 'Available' %}
+                <a href="{{url_for('rent', brand=bike['Brand'], model=bike['model'], price=bike['price']) }}" class="button-link">
+                    Rent now
+                </a>
+            {% else %}
+                <p>bike not available</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 50px;
+    text-align: center;
+}
+h1 {
+    color: #f95959;
+    margin-bottom: 20px;
+}
+p {
+    font-size: 18px;
+}
+a {
+    color: #f95959;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
